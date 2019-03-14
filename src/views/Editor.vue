@@ -2,44 +2,28 @@
   <div id="Editor">
     <nav>
       <ol>
-        <li class="active">
+        <li v-for="i in [0,1,2,3,4,5]"  v-bind:class="{active:currentTag===i}" v-on:click="currentTag=i" >
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-credentials_icon"></use>
-          </svg>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-WORK"></use>
-          </svg>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-xuexi"></use>
-          </svg>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-xiangmu"></use>
-          </svg>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-jineng"></use>
-          </svg>
-        </li>
-        <li>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-dianhua"></use>
+            <use v-bind:xlink:href="`#icon-${icons[i]}`"></use>
           </svg>
         </li>
       </ol>
     </nav>
-    <ol></ol>
+    <ol class="list">
+      <li v-for="i in [0, 1, 2, 3, 4, 5]" v-bind:class="{active:currentTag===i}"> tab{{i+1}}</li>
+    </ol>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      currentTag: 0,
+      icons: ['credentials_icon', 'WORK', 'xuexi', 'xiangmu', 'jineng', 'dianhua' ]
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -66,8 +50,14 @@ export default {};
             }
         }
     }
-    ol{
+    ol.list{
         flex-grow: 1.0;
+        li{
+          display: none;
+        }
+        li.active{
+          display: block;
+        }
     }
 }
 </style>
