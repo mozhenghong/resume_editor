@@ -8,8 +8,6 @@
       <el-form-item label="邮箱">
         <el-input v-model="contact.email"></el-input>
       </el-form-item>
-      <el-button type="primary">保存</el-button>
-      <el-button>取消</el-button>
     </el-form>
   </div>
 </template>

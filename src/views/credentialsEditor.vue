@@ -11,8 +11,6 @@
       <el-form-item label="籍贯">
         <el-input v-model="credentials.origin"></el-input>
       </el-form-item>
-      <el-button type="primary">保存</el-button>
-      <el-button>取消</el-button>
     </el-form>
   </div>
 </template>

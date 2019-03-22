@@ -92,6 +92,9 @@ export default {
     li {
       display: none;
       padding: 25px;
+      h2{
+        color: #254665;
+      }
       .break{
       border-bottom:1px solid  #254665;
       margin-bottom: 10px;

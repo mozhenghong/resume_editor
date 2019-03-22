@@ -1,46 +1,113 @@
 <template>
   <div id="Preview">
+    <div class="top">
+      <div class="top1"></div>
+      <div class="top2"></div>
+    </div>
     <section class="credentials">
-      <h2>{{resume.credentials.name||'请填写姓名'}}</h2>
-      <p> {{resume.credentials.birth||'请填写出生年月'}} | {{resume.credentials.origin||'请填写籍贯'}}</p>
+      <div class="title">{{resume.credentials.name||'请填写姓名'}}</div>
+      <p>{{resume.credentials.birth||'请填写出生年月'}} | {{resume.credentials.origin||'请填写籍贯'}}</p>
     </section>
     <section class="workHistory">
-      <h2>工作经历</h2>
-      <hr>
+      <div class="title">
+        <svg class="icon" aria-hidden="true">
+          <use v-bind:xlink:href="`#icon-WORK`"></use>
+        </svg>
+        <span>工作经历</span>
+      </div>
       <ul>
-          <li v-for="(work, key) in resume.workHistory" v-bind:key="key">
-             {{work.date||'请填写工作经历'}} {{work.company}}  {{work.content}}
-          </li>
+        <li v-for="(work, key) in resume.workHistory" v-bind:key="key">
+          <div>
+            <b>起止时间:</b>
+            {{work.date}}
+          </div>
+          <div>
+            <b>公司名称:</b>
+            {{work.company}}
+          </div>
+          <div>
+            <b>工作内容:</b>
+            {{work.content}}
+          </div>
+        </li>
       </ul>
     </section>
     <section class="educationHistory">
-      <h2>教育背景</h2>
+      <div class="title">
+        <svg class="icon" aria-hidden="true">
+          <use v-bind:xlink:href="`#icon-xuexi`"></use>
+        </svg>
+        <span>教育背景</span>
+      </div>
       <ul>
-          <li v-for="(item, key) in resume.educationHistory" v-bind:key="key">
-             {{item.date||'请填写教育背景'}} {{item.school}}  {{item.degree}}
-          </li>
+        <li v-for="(item, key) in resume.educationHistory" v-bind:key="key">
+          <div>
+            <b>起止时间:</b>
+            {{item.date}}
+          </div>
+          <div>
+            <b>学校名称:</b>
+            {{item.school}}
+          </div>
+          <div>
+            <b>获得学位:</b>
+            {{item.degree}}
+          </div>
+        </li>
       </ul>
     </section>
     <section class="project">
-      <h2>项目经验</h2>
+      <div class="title">
+        <svg class="icon" aria-hidden="true">
+          <use v-bind:xlink:href="`#icon-xiangmu`"></use>
+        </svg>
+        <span>项目经验</span>
+      </div>
       <ul>
-          <li v-for="(item, key) in resume.project" v-bind:key="key">
-             {{item.duration||'请填写项目经验'}} {{item.name}}  {{item.content}}
-          </li>
+        <li v-for="(item, key) in resume.project" v-bind:key="key">
+          <div>
+            <b>起止时间:</b>
+            {{item.duration}}
+          </div>
+          <div>
+            <b>项目名称:</b>
+            {{item.name}}
+          </div>
+          <div>
+            <b>项目内容:</b>
+            {{item.content}}
+          </div>
+        </li>
       </ul>
     </section>
-     <section class="skills">
-      <h2>职业技能</h2>
+    <section class="skills">
+      <div class="title">
+        <svg class="icon" aria-hidden="true">
+          <use v-bind:xlink:href="`#icon-jineng`"></use>
+        </svg>
+        <span>职业技能</span>
+      </div>
       <ul>
-          <li v-for="(item, key) in resume.skills" v-bind:key="key">
-             {{item.content||'请填写职业技能'}} 
-          </li>
+        <li v-for="(item, key) in resume.skills" v-bind:key="key">{{item.content||'请填写职业技能'}}</li>
       </ul>
     </section>
-     <section class="contact">
-      <h2>联系方式</h2>
-      <p>电话:{{resume.contact.phone||'请填写电话'}}</p>
-      <p>邮箱:{{resume.contact.email||'请填写邮箱'}}</p>
+    <section class="contact">
+      <div class="title">
+        <svg class="icon" aria-hidden="true">
+          <use v-bind:xlink:href="`#icon-dianhua`"></use>
+        </svg>
+        <span>联系方式</span>
+      </div>
+      <ul>
+        <li>
+          <b>电话:</b>
+          {{resume.contact.phone||'请填写电话'}}
+        </li>
+        <li>
+          <b>邮箱:</b>
+          {{resume.contact.email||'请填写邮箱'}}
+        </li>
+      </ul>
     </section>
   </div>
 </template>
@@ -49,25 +116,62 @@
 export default {
   props: ["resume"],
   methods: {
-      filter(array){
-          return array.filter((item) => { !this.isEmpty(item)})
-      },
-      isEmpty(object){
-          let empty = true
-          for(let key in object){
-              if(object[key]){
-                  empty = false
-                  break
-              }
-              
-          }
-      },
-      
+    filter(array) {
+      return array.filter(item => {
+        !this.isEmpty(item);
+      });
+    },
+    isEmpty(object) {
+      let empty = true;
+      for (let key in object) {
+        if (object[key]) {
+          empty = false;
+          break;
+        }
+      }
+    }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 #Preview {
+  overflow: auto;
+  padding: 10px 0;
+  .top {
+    display: flex;
+    height: 30px;
+    margin-top: 20px;
+    .top1 {
+      width: 10vw;
+      margin-right: 1vw;
+      background-color: #254665;
+      box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    }
+    .top2 {
+      width: 89vw;
+      background-color: #254665;
+      box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  section {
+    padding: 0 40px;
+    .title {
+      color: #254665;
+      padding: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    p {
+      color: #b4b4b4;
+    }
+    ul{
+        margin-left: 40px;
+    }
+    li {
+      color: #b4b4b4;
+      padding-bottom: 8px;
+    }
+  }
 }
 </style>

@@ -90,7 +90,6 @@ export default {
       background-color: #fff;
       margin: 16px 16px 16px 8px;
       border-radius: 4px;
-      overflow: hidden;
     }
     .buttons {
       position: relative;
