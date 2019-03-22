@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>工作经历</h2>
-    <el-form label-position="top" v-for="(work, index) in workHistory" class="break">
+    <el-form label-position="top" v-for="(work, index) in workHistory" class="break" v-bind:key="index">
       <i class="el-icon-error remove" v-on:click="removeWorkHistory(index)"></i>
       <el-form-item label="起止时间">
         <el-input v-model="work.date"></el-input>

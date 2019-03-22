@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>项目经验</h2>
-    <el-form label-position="top" v-for="(item, index) in project" class="break">
+    <el-form label-position="top" v-for="(item, index) in project" class="break" v-bind:key="index">
       <i class="el-icon-error remove" v-on:click="removeProject(index)"></i>
       <el-form-item label="起止时间">
         <el-input v-model="item.duration"></el-input>

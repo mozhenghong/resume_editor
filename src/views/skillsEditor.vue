@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>职业技能</h2>
-    <el-form label-position="top" v-for="(item, index) in skills" class="break">
+    <el-form label-position="top" v-for="(item, index) in skills" class="break" v-bind:key="index">
       <i class="el-icon-error remove" v-on:click="removeSkills(index)"></i>
       <el-form-item label="技能">
         <el-input v-model="item.content"></el-input>

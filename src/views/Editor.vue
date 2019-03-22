@@ -15,22 +15,22 @@
     </nav>
     <ol class="list">
       <li v-bind:class="{active:currentTag===0}" class="credentials">
-        <credentials v-bind:credentials="credentials"></credentials>
+        <credentials v-bind:credentials="resume.credentials"></credentials>
       </li>
       <li v-bind:class="{active:currentTag===1}">
-        <workHistory v-bind:workHistory="workHistory"></workHistory>
+        <workHistory v-bind:workHistory="resume.workHistory"></workHistory>
       </li>
       <li v-bind:class="{active:currentTag===2}">
-        <educationHistory v-bind:educationHistory="educationHistory"></educationHistory>
+        <educationHistory v-bind:educationHistory="resume.educationHistory"></educationHistory>
       </li>
       <li v-bind:class="{active:currentTag===3}">
-         <project v-bind:project="project"></project>
+         <project v-bind:project="resume.project"></project>
       </li>
       <li v-bind:class="{active:currentTag===4}"> 
-        <skills v-bind:skills="skills"></skills>
+        <skills v-bind:skills="resume.skills"></skills>
       </li>
       <li v-bind:class="{active:currentTag===5}"> 
-        <contact v-bind:contact="contact"></contact>
+        <contact v-bind:contact="resume.contact"></contact>
       </li>
     </ol>
   </div>
@@ -44,6 +44,7 @@ import project from './projectEditor.vue'
 import skills from './skillsEditor.vue'
 import contact from './contactEditor'
 export default {
+  props: ['resume'],
   components: {credentials, workHistory, educationHistory, project, skills, contact},
   data() {
     return {
@@ -56,29 +57,7 @@ export default {
         "jineng",
         "dianhua"
       ],
-      labelPosition: "right",
-      credentials: {
-        name: "",
-        birth: "",
-        origin: "",
-      },
-      contact: {
-        phone: "",
-        emails: ""
-      },
-      workHistory:[
-        {date: '', company:'', content: ''}
-      ],
-      educationHistory: [
-        {date: '', school:'', degree: ''}
-      ],
-      project: [
-        {name: '', duration: '', content: ''}
-      ],
-      skills: [
-        {content: ''}
-      ]
-    };
+    }
   },
 };
 </script>
