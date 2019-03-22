@@ -1,11 +1,12 @@
 <template>
   <div id="Preview">
     <section class="credentials">
-      <h2>个人信息</h2>
-      <p>{{resume.credentials.name||'请填写姓名'}} | {{resume.credentials.birth||'请填写出生年月'}} | {{resume.credentials.origin||'请填写籍贯'}}</p>
+      <h2>{{resume.credentials.name||'请填写姓名'}}</h2>
+      <p> {{resume.credentials.birth||'请填写出生年月'}} | {{resume.credentials.origin||'请填写籍贯'}}</p>
     </section>
     <section class="workHistory">
       <h2>工作经历</h2>
+      <hr>
       <ul>
           <li v-for="(work, key) in resume.workHistory" v-bind:key="key">
              {{work.date||'请填写工作经历'}} {{work.company}}  {{work.content}}

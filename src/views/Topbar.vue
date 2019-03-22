@@ -4,14 +4,19 @@
       <use xlink:href="#icon-resume"></use>
     </svg>
     <el-row class="buttons">
-      <el-button class="button1" type="primary">登录</el-button>
-      <el-button class="button2">注册</el-button>
+      <el-button class="button1" type="primary" v-on:click="preview">预览</el-button>
     </el-row>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    preview() {
+      this.$emit('preview')
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -33,9 +38,6 @@ export default {};
       padding: 8px 16px;
       background-color: #00c091;
       border-color: #00c091;
-    }
-    .button2 {
-      padding: 8px 16px;
     }
   }
 }
