@@ -161,6 +161,9 @@ export default {
       padding: 20px 0;
       font-size: 24px;
       font-weight: bold;
+      span{
+          margin-left: 8px;
+      }
     }
     p {
       color: #b4b4b4;
